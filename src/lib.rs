@@ -61,7 +61,8 @@ pub use extractor::{
     extract_text_with_positions_and_rotations_mem_in_frame,
     extract_text_with_positions_and_rotations_mem_with_options, extract_text_with_positions_mem,
     extract_text_with_positions_mem_in_frame, extract_text_with_positions_mem_with_options,
-    extract_text_with_positions_pages, extract_text_with_positions_pages_with_password,
+    extract_text_with_positions_and_rects_pages, extract_text_with_positions_pages,
+    extract_text_with_positions_pages_with_password,
     PositionFrame, PositionOptions,
 };
 pub use markdown::{
@@ -69,7 +70,7 @@ pub use markdown::{
     to_markdown_from_items_with_rects_and_page_count, MarkdownOptions, MarkdownProfile,
 };
 pub use process_mode::ProcessMode;
-pub use types::{BoldSource, LayoutComplexity, PdfLine, PdfRect, TextItem};
+pub use types::{BoldSource, LayoutComplexity, PageExtraction, PdfLine, PdfRect, TextItem};
 
 use lopdf::Document;
 use std::collections::{BTreeMap, HashMap, HashSet};

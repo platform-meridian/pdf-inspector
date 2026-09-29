@@ -10,7 +10,10 @@ use crate::text_utils::should_join_items;
 
 /// Result tuple returned by page-level text extraction: text items, rectangles, line segments,
 /// and whether fonts with unresolvable gid-encoded glyphs were encountered.
-pub(crate) type PageExtraction = (Vec<TextItem>, Vec<PdfRect>, Vec<PdfLine>);
+/// The text, the rectangles and the lines one extraction pass found: what a
+/// caller needs to read a ruled table, since the rules a page draws are what
+/// bound its cells.
+pub type PageExtraction = (Vec<TextItem>, Vec<PdfRect>, Vec<PdfLine>);
 
 /// Per font (its `/BaseFont` name, or its resource name without one), how
 /// the codes shown through the font's CMap fared: the codes shown, the ones

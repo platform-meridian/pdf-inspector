@@ -225,6 +225,24 @@ pub fn extract_text_with_positions_pages_with_password<P: AsRef<Path>>(
     Ok(items)
 }
 
+/// Extract text with positions from a file **with the rectangles and lines the
+/// page draws**, limited to specific pages.
+///
+/// [`extract_text_with_positions_pages`] collects all three and returns only the
+/// text. A caller reading a ruled table needs the other two: a table's cells are
+/// bounded by the rules its page draws, and re-deriving them from the content
+/// streams means decoding the document a second time.
+///
+/// `page_filter` is an optional set of 1-indexed page numbers to process. When
+/// `None`, all pages are processed. Coordinates: see
+/// [`extract_text_with_positions`].
+pub fn extract_text_with_positions_and_rects_pages<P: AsRef<Path>>(
+    path: P,
+    page_filter: Option<&HashSet<u32>>,
+) -> Result<PageExtraction, PdfError> {
+    extract_text_with_positions_and_rects_with_password(path, page_filter, None)
+}
+
 pub(crate) fn extract_text_with_positions_and_rects_with_password<P: AsRef<Path>>(
     path: P,
     page_filter: Option<&HashSet<u32>>,
